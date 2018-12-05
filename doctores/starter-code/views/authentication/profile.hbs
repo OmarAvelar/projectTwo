@@ -1,12 +1,269 @@
-<h1>Bienvenido: {{user.username}}</h1>
+{{!-- <h1>Bienvenido: {{user.username}}</h1>
  <a href="/new-post">New post</a>
  <a href="/">Home</a>
  <a href="/logout">LogOut</a>
+ <a href="/map">Map</a>
+ 
+<form action="/routes/post/{{user._id}}" method="POST" enctype="multipart/form-data">
 
- <h3>Posts:</h3>
+
+  <div class="form-group">
+         <label for="photoURL">Photo</label>
+         <input type="file" name="photoURL">
+     </div>
+     <input type="submit" name="submit" value="Submit">
+
+</form> --}}
+{{!-- <img src="{{this.photoURL}}" alt=""> --}}
+{{!-- <img src="{{user.photoURL.path}}" alt="{{user.photoURL.originalname}}"> --}}
+ 
+ 
+ 
+ 
+ {{!-- <h3>Posts:</h3>
  {{#each posts}}
      <p>{{this.content}}</p>
      <img src="{{this.picpath}}" alt="{{this.picname}}">
- {{/each}}
+ {{/each}} --}}
 
- 
+   {{#if paciente}}
+
+    <!-- directorio -->
+
+    <section class="directorio">
+      <div
+        class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin uk-box-shadow-xlarge"
+        uk-grid
+      >
+        <div class="uk-card-media-left uk-cover-container">
+          <img
+            src="https://myblue.bluecrossma.com/sites/g/files/csphws1086/files/inline-images/Doctor%20Image%20Desktop.png"
+            alt=""
+            uk-cover
+          />
+          <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">Nombre: {{user.username}}</h3>
+            <p>Dirección: {{user.location.address}}</p>
+            <p>Telefono: {{user.phone}}</p>
+            <button class="uk-button uk-button-default">Editar Perfil</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- cita -->
+    <h2 class="comentarioTitulo">Citas agendadas</h2>
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+              <img
+                class="uk-border-circle"
+                width="40"
+                height="40"
+                src="images/avatar.jpg"
+              />
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Title</h3>
+              <p class="uk-text-meta uk-margin-remove-top">
+                <time datetime="2016-04-01T19:00">April 01, 2016</time>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- comentarios -->
+    <h2 class="comentarioTitulo">Opiniones</h2>
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+              <img
+                class="uk-border-circle"
+                width="40"
+                height="40"
+                src="images/avatar.jpg"
+              />
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Title</h3>
+              <p class="uk-text-meta uk-margin-remove-top">
+                <time datetime="2016-04-01T19:00">April 01, 2016</time>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+              <img
+                class="uk-border-circle"
+                width="40"
+                height="40"
+                src="images/avatar.jpg"
+              />
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Title</h3>
+              <p class="uk-text-meta uk-margin-remove-top">
+                <time datetime="2016-04-01T19:00">April 01, 2016</time>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+{{else}}
+
+
+<!-- directorio -->
+
+    <section class="directorio">
+      <div
+        class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin uk-box-shadow-xlarge"
+        uk-grid
+      >
+        <div class="uk-card-media-left uk-cover-container">
+          <img src="/images/sinfoto.png" alt="" uk-cover />
+          <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">Nombre: {{user.username}}</h3>
+            <p>Cedula Profesional: {{user.cedula}}</p>
+            <p>Profesion: {{user.titulo}}</p>
+            <p>Especialidad: {{user.especialidad}}</p>
+            <p>Dirección: {{user.location.address}}</p>
+            <p>Telefono: {{user.phone}}</p>
+            <a class="uk-button uk-button-default" href="/formulario" >Editar Perfil</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- experiencia -->
+    <h2 class="comentarioTitulo">Experiencia</h2>
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Formación</h3>
+            </div>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <p>
+            {{user.formacion}}
+          </p>
+        </div>
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Sobre mi</h3>
+            </div>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <p>
+            {{user.sobremi}}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- cita -->
+    <h2 class="comentarioTitulo">Citas agendadas</h2>
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+              <img
+                class="uk-border-circle"
+                width="40"
+                height="40"
+                src="images/avatar.jpg"
+              />
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Title</h3>
+              <p class="uk-text-meta uk-margin-remove-top">
+                <time datetime="2016-04-01T19:00">April 01, 2016</time>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- comentarios -->
+    <h2 class="comentarioTitulo">Opiniones</h2>
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+              <img
+                class="uk-border-circle"
+                width="40"
+                height="40"
+                src="images/avatar.jpg"
+              />
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Title</h3>
+              <p class="uk-text-meta uk-margin-remove-top">
+                <time datetime="2016-04-01T19:00">April 01, 2016</time>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+{{/if}}

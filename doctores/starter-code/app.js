@@ -12,7 +12,9 @@ const express = require('express');
  const MongoStore = require('connect-mongo')(session);
  const mongoose = require('mongoose');
  const flash = require('connect-flash');
- const hbs = require('hbs')
+ const hbs = require('hbs');
+ const welcomeMail = require("./helpers/mailer").welcomeMail;
+
 
  //DB
  mongoose.connect('mongodb://localhost:27017/doctors');
@@ -88,6 +90,7 @@ const express = require('express');
                  });
 
                  newUser.save((err) => {
+                  welcomeMail(newUser.username, newUser.email)
                      if (err){ next(null, false, { message: newUser.errors }) }
                      return next(null, newUser);
                  });

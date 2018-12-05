@@ -7,6 +7,9 @@ const mongoose = require('mongoose');
     email: String,
     password: String,
     photoURL: String,
+    phone: String,
+    formacion: String,
+    sobremi: String,
     location: {
       type: {
         type: String,

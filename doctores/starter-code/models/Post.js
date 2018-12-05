@@ -7,8 +7,10 @@ const mongoose = require('mongoose');
          type: Schema.Types.ObjectId, 
          ref: 'User'
         },
-     picpath: String,
-     picname: String
+        postedID: {
+            type: Schema.Types.ObjectId, 
+            ref: 'User'
+        }
  });
 
  module.exports = mongoose.model('Post', postSchema);

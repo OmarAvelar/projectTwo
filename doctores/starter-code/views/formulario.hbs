@@ -1,0 +1,90 @@
+<!-- Editar Usuario -->
+    {{#if paciente}}
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">
+                Editar Perfil
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <form
+            action=""
+            method="POST"
+            enctype="multipart/form-data"
+            class="edit-form"
+          >
+            <label for="">Nombre</label> <input type="text" name="username" />
+            <label for="">Dirección</label>
+            <input type="text" name="ubication" />
+            <label for="">Telefono</label> <input type="text" name="phone" />
+            <label for="">Foto de Perfil</label>
+            <input type="file" name="photoURL" />
+            <input type="submit" value="Guardar" />
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editar Profesional -->
+        {{else}}
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">
+                Editar Perfil
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <form
+            action=""
+            method="POST"
+            enctype="multipart/form-data"
+            class="edit-form"
+          >
+            <label for="">Nombre</label> <input type="text" name="username" />
+            <label for="">Cedula profesional</label>
+            <input type="text" name="cedula" /> <label for="">Profesión</label>
+            <select name="titulo" id="doctor">
+              <option value="Doctor">Doctor</option>
+              <option value="Enfermera">Enfermera</option>
+            </select>
+            <label for="">Especialidad</label>
+            <select name="especialidad" id="especialistas">
+              <option value="Especialistas">Especialistas</option>
+              <option value="Acupuntura">Acupuntura</option>
+              <option value="Alergología">Alergología</option>
+              <option value="Anestesiología">Anestesiología</option>
+              <option value="Cardiología">Cardiología</option>
+              <option value="CirugíaEstéticayCosmética"
+                >Cirugía Estética y Cosmética</option
+              >
+              <option value="Cirugía General">Cirugía General</option>
+              <option value="Dermatología">Dermatología</option>
+              <option value="Endocrinología">Endocrinología</option>
+              <option value="Fisioterapia">Fisioterapia</option>
+              <option value="Acupuntura">Acupuntura</option>
+            </select>
+            <label for="">Dirección</label>
+            <input type="text" name="ubication" />
+            <label for="">Telefono</label> <input type="text" name="phone" />
+            <label for="">Foto de Perfil</label>
+            <input type="file" name="photoURL" />
+            <label for="">Formación</label>
+            <input type="text" name="formacion" />
+            <label for="">Sobre mi</label> <input type="text" name="sobremi" />
+
+            <input type="submit" value="Guardar" />
+          </form>
+        </div>
+      </div>
+    </section>
+    {{/if}}

@@ -1,0 +1,117 @@
+{{!-- <div id="map" style="width: 400px; height: 400px;"></div>
+
+<h1>Map</h1>
+
+<div id="googleMap" style="width:100%;height:400px;"></div>
+
+<script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+    var uluru = {lat: 19.432608, lng: -99.133209};
+    var ulururu = {lat: 19.402608, lng: -99.123209};
+
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 15, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+  var markerTwo = new google.maps.Marker({position: ulururu, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeuv5OUrNW0X9zonL9ldzdjgFR9KtRwM8&callback=initMap">
+    </script> --}}
+
+
+
+{{!-- ////////////////////////////////// --}}
+
+
+{{!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> --}}
+   <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeuv5OUrNW0X9zonL9ldzdjgFR9KtRwM8&callback=initMap">
+    </script>
+   <script type="text/javascript">
+   var markers = [
+    
+            {
+               "title": 'Doc Uno',
+               "lat": '19.432608',
+               "lng": '-99.133209',
+               "description": 'Doc uno'
+           }
+    
+       ,
+    
+            {
+               "title": 'Doc Dos',
+               "lat": '19.402608',
+               "lng": '-99.123209',
+               "description": 'Doc Dos hehe'
+           }
+    
+    
+     
+    
+   ];
+   </script>
+   <script type="text/javascript">
+ 
+       window.onload = function () {
+           var mapOptions = {
+               center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+               zoom: 12,
+               mapTypeId: google.maps.MapTypeId.ROADMAP
+           };
+           var path = new google.maps.MVCArray();
+           var service = new google.maps.DirectionsService();
+ 
+           var infoWindow = new google.maps.InfoWindow();
+           var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+           var poly = new google.maps.Polyline({ map: map, strokeColor: '#FF8200' });
+           var lat_lng = new Array();
+           for (i = 0; i < markers.length; i++) {
+               var data = markers[i]
+               var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+               lat_lng.push(myLatlng);
+               var marker = new google.maps.Marker({
+                   position: myLatlng,
+                   map: map,
+                   title: data.title
+               });
+               (function (marker, data) {
+                   google.maps.event.addListener(marker, "click", function (e) {
+                       infoWindow.setContent(data.description);
+                       infoWindow.open(map, marker);
+                   });
+               })(marker, data);
+           }
+           for (var i = 0; i < lat_lng.length; i++) {
+               if ((i + 1) < lat_lng.length) {
+                   var src = lat_lng[i];
+                   var des = lat_lng[i + 1];
+                   path.push(src);
+                   poly.setPath(path);
+                   service.route({
+                       origin: src,
+                       destination: des,
+                       travelMode: google.maps.DirectionsTravelMode.DRIVING
+                   }, function (result, status) {
+                       if (status == google.maps.DirectionsStatus.OK) {
+                           for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                               path.push(result.routes[0].overview_path[i]);
+                           }
+                       }
+                   });
+               }
+           }
+       }
+   </script>
+   <div id="dvMap" style="width: 500px; height: 500px">
+   </div>
