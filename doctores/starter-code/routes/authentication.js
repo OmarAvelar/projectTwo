@@ -17,7 +17,7 @@ const express = require('express');
  });
 
  router.post('/login', ensureLoggedOut(), passport.authenticate('local-login', {
-   successRedirect : '/profile',
+   successRedirect : '/profile/myprofile',
    failureRedirect : '/login',
    failureFlash : true,
    passReqToCallback: true
@@ -61,15 +61,33 @@ const express = require('express');
 //       })
 
 
- router.get('/profile', ensureLoggedIn('/login'), (req, res) => {
+ router.get('/profile/myprofile', (req, res) => {
+     const username = req.user.username
     const paciente = (req.user.role === "Paciente") ? true : false
-    const flags = true
+    const flags = false
      Post.find({creatorId: req.user._id})
      .then(posts => res.render('authentication/profile', 
      {user : req.user, posts, paciente, flags}))
      .catch(e => console.log(e));
  });
 
+ router.get('/profile/:username', (req, res, next)=>{
+     const {username} = req.params
+     console.log(username)
+     const paciente = (req.user.role === "Paciente") ? true : false
+     const flags = false
+     User.findOne({username})
+     .then( foundUser =>{
+        //Post.find({creatorId: req.user._id})
+        //.then(posts => 
+        console.log(foundUser)
+        res.render('authentication/profile', {user: foundUser})
+        .catch(e => console.log(e));
+ 
+
+     })
+
+ })
  router.get('/logout', ensureLoggedIn('/login'), (req, res) => {
      req.logout();
      const flags = false;

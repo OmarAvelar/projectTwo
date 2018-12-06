@@ -1,29 +1,4 @@
-<!-- filtros -->
-    <section class="secFiltros">
-      <nav class="filtros">
-        <h3>FILTROS</h3>
-        <form class="uk-search uk-search-default">
-          <input id="geo" style="width:200px;height:30px" type="text" />
-          <input id="lat" name="lat" type="hidden" />
-          <input id="lng" name="lng" type="hidden" />
-          <select name="" id="especialistas" class="">
-            <option value="Especialialidad">Especialidad</option>
-            <option value="Acupuntura">Acupuntura</option>
-            <option value="Alergología">Alergología</option>
-            <option value="Anestesiología">Anestesiología</option>
-            <option value="Cardiología">Cardiología</option>
-            <option value="CirugíaEstéticayCosmética"
-              >Cirugía Estética y Cosmética</option
-            >
-            <option value="Cirugía General">Cirugía General</option>
-            <option value="Dermatología">Dermatología</option>
-            <option value="Endocrinología">Endocrinología</option>
-            <option value="Fisioterapia">Fisioterapia</option>
-            <option value="Acupuntura">Acupuntura</option>
-          </select>
-        </form>
-      </nav>
-    </section>
+
 
     <!-- mapa -->
 
@@ -54,24 +29,24 @@
             <h3 class="uk-card-title">Nombre: {{this.username}}</h3>
             <p>Dirección: {{this.direccion}}</p>
             <div class="uk-card-footer">
-              <button
+              <a href="/profile"
                 class="uk-button uk-button-default"
                 style="margin-top: 10px;"
               >
                 Agendar Cita
-              </button>
-              <button
+              </a>
+              <a
                 class="uk-button uk-button-default"
                 style="margin-top: 10px;"
               >
                 Ver Perfil
-              </button>
-              <button
+              </a>
+              <a
                 class="uk-button uk-button-default"
                 style="margin-top: 10px;"
               >
                 Agregar opinión
-              </button>
+              </a>
             </div>
           </div>
         </div>

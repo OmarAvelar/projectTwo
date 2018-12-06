@@ -25,4 +25,18 @@ router.post('/directorio', (req, res)=>{
 })
 
 
+
+
+router.get('/review', (req, res) => {
+  const {id} = req.params
+  User.findById(id)
+  .then(user =>{
+     const paciente = (req.user.role === "Paciente") ? true : false
+     res.render('review', {paciente, user});
+  })
+
+ 
+});
+
+
  module.exports = router

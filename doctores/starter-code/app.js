@@ -66,7 +66,6 @@ const express = require('express');
      // To avoid race conditions
      process.nextTick(() => {
          User.findOne({
-             'username': username
          }, (err, user) => {
              if (err){ return next(err); }
  
