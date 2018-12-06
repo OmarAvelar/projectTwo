@@ -78,6 +78,7 @@ const express = require('express');
                    username,
                    email,
                    password,
+                   role,
                  } = req.body;
                  //const path = `/uploads/${req.file.filename}`;
                  //const {originalname} = req.file
@@ -86,6 +87,7 @@ const express = require('express');
                    username,
                    email,
                    password: hashPass,
+                   role,
                    //profilePicture:{path, originalname}
                  });
 

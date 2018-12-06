@@ -28,7 +28,7 @@ const express = require('express');
  });
 
 
- router.post('/signup', [ensureLoggedOut(), upload.single('photo')], passport.authenticate('local-signup', {
+ router.post('/signup', [ensureLoggedOut()], passport.authenticate('local-signup', {
    successRedirect : '/profile',
    failureRedirect : '/signup',
    failureFlash : true,
