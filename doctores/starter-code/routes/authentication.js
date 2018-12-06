@@ -137,13 +137,13 @@ router.post('/formulario/:id', [ensureLoggedIn('/login'), upload.single('photoUR
 
 
 
-router.get('/users/:id',  (req, res) => {
-    const paciente = (req.user.role === "Paciente") ? true : false
-    User.findById(req.params.id)
-   .then(user =>{
-       res.render('authentication/profile', )
-   })
-});
+// router.get('/users/:id',  (req, res) => {
+//     const paciente = (req.user.role === "Paciente") ? true : false
+//     User.findById(req.params.id)
+//    .then(user =>{
+//        res.render('authentication/profile', )
+//    })
+// });
 
 
 
