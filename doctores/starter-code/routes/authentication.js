@@ -87,7 +87,7 @@ const express = require('express');
     
 });
 
-router.post('/formulario/:id', [ensureLoggedIn('/login'), upload.single('photo')], (req,res) => {
+router.post('/formulario/:id', [ensureLoggedIn('/login'), upload.single('photoURL')], (req,res) => {
     const id = req.params.id
     let todo = {
         username: req.body.username,
@@ -96,7 +96,7 @@ router.post('/formulario/:id', [ensureLoggedIn('/login'), upload.single('photo')
         phone:  req.body.phone,
         sobremi: req.body.sobremi,
         formacion: req.body.formacion,
-        photoURL: req.body.photoURL,
+        photoURL: `/uploads/${req.file.filename} `,
         direccion: req.body.direccion,
         location: {
             type: "Point",
