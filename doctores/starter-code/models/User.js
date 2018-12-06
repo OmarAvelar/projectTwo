@@ -15,12 +15,9 @@ const mongoose = require('mongoose');
         type: String,
         default: "Point"
       },
-      address: String,
-      coordinates: {
-        lat: { type: Number },
-        lng: { type: Number }
-      }
+      coordinates: [Number]
     },
+    direccion: String,
     citas: [
       {
         type: Schema.Types.ObjectId,

@@ -46,9 +46,9 @@
         <div>
           <div class="uk-card-body">
             <h3 class="uk-card-title">Nombre: {{user.username}}</h3>
-            <p>Dirección: {{user.location.address}}</p>
+            <p>Dirección: {{user.direccion}}</p>
             <p>Telefono: {{user.phone}}</p>
-            <button class="uk-button uk-button-default">Editar Perfil</button>
+            <a class="uk-button uk-button-default"  href="/formulario/{{user._id}}">Editar Perfil</button>
           </div>
         </div>
       </div>
@@ -166,9 +166,9 @@
             <p>Cedula Profesional: {{user.cedula}}</p>
             <p>Profesion: {{user.titulo}}</p>
             <p>Especialidad: {{user.especialidad}}</p>
-            <p>Dirección: {{user.location.address}}</p>
+            <p>Dirección: {{user.direccion}}</p>
             <p>Telefono: {{user.phone}}</p>
-            <a class="uk-button uk-button-default" href="/formulario" >Editar Perfil</a>
+            <a class="uk-button uk-button-default" href="/formulario/{{user._id}}" >Editar Perfil</a>
           </div>
         </div>
       </div>

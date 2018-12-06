@@ -76,16 +76,42 @@ const express = require('express');
 
 
  //formulairo
- router.get('/formulario', (req, res) => {
-    const paciente = (req.user.role === "Paciente") ? true : false
-    res.render('formulario', {paciente});
+ router.get('/formulario/:id', (req, res) => {
+     const {id} = req.params
+     User.findById(id)
+     .then(user =>{
+        const paciente = (req.user.role === "Paciente") ? true : false
+        res.render('formulario', {paciente, user});
+     })
+
+    
 });
 
-router.post('/formulario', [ensureLoggedIn('/login'), upload.single('photo')], (req,res) => {
+router.post('/formulario/:id', [ensureLoggedIn('/login'), upload.single('photo')], (req,res) => {
     const id = req.params.id
-    let {username, cedula, titulo, especialidad, address, phone, sobremi, formacion} = req.body
-    User.findByIdAndUpdate(id, {username, cedula, titulo, especialidad, address, phone, sobremi, formacion}, {new: true},null)
+    let todo = {
+        username: req.body.username,
+        cedula: req.body.cedula,
+        titulo: req.body.titulo,
+        phone:  req.body.phone,
+        sobremi: req.body.sobremi,
+        formacion: req.body.formacion,
+        photoURL: req.body.photoURL,
+        direccion: req.body.direccion,
+        location: {
+            type: "Point",
+            coordinates: [req.body.lng, req.body.lat]
+        }
+    }
+    // let locacion = {
+    //     type: "Point",
+    //     coordinates: [req.body.lng, req.body.lat]
+    // }
+    //     console.log(locacion)
+    // let {username, cedula, titulo, phone, sobremi, formacion, photoURL, direccion} = req.body
+    User.findByIdAndUpdate(id, {$set:todo}, {new: true},null)
     .then(User=>{
+
         res.redirect('/profile');
     }).catch(e=>{
         console.log(e)
