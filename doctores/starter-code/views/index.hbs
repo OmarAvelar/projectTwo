@@ -11,13 +11,13 @@
 
     <br />
 
-    <form action="">
-        <select name="" id="doctor">
+    <form action="/directorio" method="POST">
+        <select name="titulo" id="doctor">
             <option value="Doctor">Doctor</option>
             <option value="Enfermera">Enfermera</option>
         </select>
 
-        <select name="" id="especialistas">
+        <select name="especialidad" id="especialistas">
             <option value="Especialistas">Especialistas</option>
             <option value="Acupuntura">Acupuntura</option>
             <option value="Alergología">Alergología</option>
@@ -31,9 +31,7 @@
             <option value="Acupuntura">Acupuntura</option>
         </select>
 
-        <button onclick="location.href='RESULTADO DE BUSQUEDA'">
-            Buscar <span uk-icon="icon:search"></span>
-        </button>
+           <button type="submit" style="text-decoration:none color:black" >Buscar</button> 
     </form>
 
 </section>

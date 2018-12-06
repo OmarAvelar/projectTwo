@@ -27,9 +27,32 @@ const express = require('express');
 
  });
 
- router.get('/map', (req, res) => {
-    res.render('map');
-});
+//  router.get('/map', (req, res) => {
+//     res.render('map');
+// });
+
+
+router.get('/map', ensureLoggedIn('/login'), (req, res) => {
+    const paciente = (req.user.role === "Paciente") ? true : false
+     Post.find({creatorId: req.user._id})
+     .then(posts => res.render('map', 
+     {user : req.user, posts, paciente}))
+     .catch(e => console.log(e));
+ });
+
+// router.get('/map', (req, res) => {
+//     //res.render('map');
+//    // User.find({});
+
+//     User.find({})
+//     .populate("location")
+//     .then( users =>
+//         res.render("map", {users:users})
+//     .catch(error => {
+//         res.redirect("/");
+//     })
+// );
+//  });
 
 
 
@@ -44,17 +67,6 @@ router.post('/routes/post/:id', upload.single("photoURL"), (req, res) => {
         console.log(e)
     })    
 });
-
-// router.post('/new', uploader.single('image'), (req, res, next) => {
-//     const { path, filename } = req.file
-//     const { content } = req.body
-//     console.log(path)
-//     const newPost = {
-//         content: content,
-//         creatorId: "5c004f6beec47219eafffe86",
-//         picPath: '/posts/' + filename,
-//         filename: filename,
-//     }
 
 
  module.exports = router;

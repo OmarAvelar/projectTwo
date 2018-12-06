@@ -63,14 +63,16 @@ const express = require('express');
 
  router.get('/profile', ensureLoggedIn('/login'), (req, res) => {
     const paciente = (req.user.role === "Paciente") ? true : false
+    const flags = true
      Post.find({creatorId: req.user._id})
      .then(posts => res.render('authentication/profile', 
-     {user : req.user, posts, paciente}))
+     {user : req.user, posts, paciente, flags}))
      .catch(e => console.log(e));
  });
 
  router.get('/logout', ensureLoggedIn('/login'), (req, res) => {
      req.logout();
+     const flags = false;
      res.redirect('/');
  });
 
@@ -98,17 +100,13 @@ router.post('/formulario/:id', [ensureLoggedIn('/login'), upload.single('photoUR
         formacion: req.body.formacion,
         photoURL: `/uploads/${req.file.filename} `,
         direccion: req.body.direccion,
+        especialidad: req.body.especialidad,
         location: {
             type: "Point",
             coordinates: [req.body.lng, req.body.lat]
         }
     }
-    // let locacion = {
-    //     type: "Point",
-    //     coordinates: [req.body.lng, req.body.lat]
-    // }
-    //     console.log(locacion)
-    // let {username, cedula, titulo, phone, sobremi, formacion, photoURL, direccion} = req.body
+
     User.findByIdAndUpdate(id, {$set:todo}, {new: true},null)
     .then(User=>{
 
@@ -117,5 +115,22 @@ router.post('/formulario/:id', [ensureLoggedIn('/login'), upload.single('photoUR
         console.log(e)
     })    
 });
+
+
+
+
+router.get('/users/:id',  (req, res) => {
+    const paciente = (req.user.role === "Paciente") ? true : false
+    User.findById(req.params.id)
+   .then(user =>{
+       res.render('authentication/profile', )
+   })
+});
+
+
+
+
+
+
  
  module.exports = router;

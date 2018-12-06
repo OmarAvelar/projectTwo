@@ -1,0 +1,124 @@
+<section class="directorio">
+      <div
+        class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin uk-box-shadow-xlarge"
+        uk-grid
+      >
+        <div class="uk-card-media-left uk-cover-container">
+          <img
+            src="https://myblue.bluecrossma.com/sites/g/files/csphws1086/files/inline-images/Doctor%20Image%20Desktop.png"
+            alt=""
+            uk-cover
+          />
+          <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">Nombre: {{user.username}}</h3>
+            <p>Cedula Profesional: {{user.cedula}}</p>
+            <p>{{user.titulo}}</p>
+            <p>Especialidad: {{user.especialidad}}</p>
+            <p>Dirección: {{user.direccion}}</p>
+            <p>Telefono: {{user.phone}}</p>
+            <a class="uk-button uk-button-default" href="/review/{{user._id}}">Agregar opinión</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- cita -->
+    <h2 class="comentarioTitulo">Agendar cita</h2>
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-expand">
+              <form action="" method="POST" class="cita-form">
+                <h3 class="uk-card-title uk-margin-remove-bottom">USUARIO</h3>
+
+                <label for="dia">Elige la fecha:</label>
+                <input type="date" id="dia" name="dia" required />
+                <label for="hora">Elige la hora:</label>
+
+                <input
+                  type="time"
+                  id="hora"
+                  name="hora"
+                  min="9:00"
+                  max="18:00"
+                  required
+                />
+
+                <span class="note">Tenemos consulta de 9am a 6pm</span>
+                <input
+                  class="uk-button uk-button-default"
+                  type="submit"
+                  value="Guardar"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- experiencia -->
+    <h2 class="comentarioTitulo">Experiencia</h2>
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Formación</h3>
+            </div>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <p>
+            {{user.formacion}}
+          </p>
+        </div>
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Sobre mi</h3>
+            </div>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <p>
+            {{user.sobremi}}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- comentarios -->
+    <h2 class="comentarioTitulo">Opiniones</h2>
+    <section class="directorio">
+      <div class="uk-card uk-card-default uk-width-1-2@m comentario ">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+              <img
+                class="uk-border-circle"
+                width="40"
+                height="40"
+                src="images/avatar.jpg"
+              />
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Title</h3>
+              <p class="uk-text-meta uk-margin-remove-top">
+                <time datetime="2016-04-01T19:00">April 01, 2016</time>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt.
+          </p>
+        </div>
+      </div>
+    </section>

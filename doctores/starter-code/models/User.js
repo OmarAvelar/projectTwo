@@ -30,7 +30,10 @@ const mongoose = require('mongoose');
       default: "Paciente"
     },
     cedula: String,
-    especialidad: String,
+    especialidad: {
+      type: String,
+      enum: ["Acupuntura", "Alergología", "Anestesiología", "Cardiología", "CirugíaEstéticayCosmética", "Cirugía General", "Dermatología", "Endocrinología", "Fisioterapia", "Acupuntura"]
+    },
     titulo: {
       type: String,
       enum: ["Doctor", "Enfermera"]
