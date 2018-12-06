@@ -17,7 +17,7 @@ const express = require('express');
 
 
  //DB
- mongoose.connect('mongodb://localhost:27017/doctors');
+ mongoose.connect(process.env.DB);
 
  const app = express();
  
